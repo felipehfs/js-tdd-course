@@ -1,2 +1,5 @@
-const p = 'ffff'
-console.log(p)
+function sum(a, b, c) {
+    return a + b + c;
+}
+
+sum();
