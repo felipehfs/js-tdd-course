@@ -4,9 +4,17 @@
   "description": "Nossa biblioteca do curso JS com TDD na prática.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepush": "npm run lint",
-    "lint": "eslint index.js"
+    "test": "mocha tests/**/*.spec.js --require babel-register",
+    "prepush": "npm run test:coverage",
+    "lint": "eslint index.js",
+    "test:coverage": "nyc npm test"
+  },
+  "nyc": {
+    "functions": 80,
+    "lines": 80,
+    "check-coverage": true,
+    "reporter": ["text", "html"],
+    "exclude": ["test/**"]
   },
   "keywords": [
     "js",
@@ -16,9 +24,14 @@
   "author": "Felipe Henrique",
   "license": "MIT",
   "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.2.0",
     "eslint": "^6.3.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "husky": "^3.0.5"
+    "husky": "^3.0.5",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1"
   }
 }
